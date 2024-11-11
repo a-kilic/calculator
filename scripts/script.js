@@ -69,3 +69,27 @@ console.log("Operate Multiply: ", operate("multiply", 5, 3)); // 15
 console.log("Operate Divide: ", operate("divide", 6, 3));     // 2
 console.log("Operate Divide by Zero: ", operate("divide", 5, 0)); // "Error: Division by zero"
 console.log("Operate Unknown Operator: ", operate("modulus", 5, 3)); // "Error: Unknown operator"
+
+
+/*
+* d) Create the functions that populate the display when you click the number buttons… you
+should be storing the ‘display value’ in a variable somewhere for use in the next step.
+* */
+
+let currentInput = "0";
+
+// Update the display
+function updateDisplay() {
+    const display = document.getElementById("display");
+    display.textContent = currentInput;
+}
+
+// Append a number to the current input
+function appendNumber(number) {
+    if (currentInput === "0") {
+        currentInput = number.toString();
+    } else {
+        currentInput += number.toString();
+    }
+    updateDisplay();
+}
