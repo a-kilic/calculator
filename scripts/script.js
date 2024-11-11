@@ -93,3 +93,51 @@ function appendNumber(number) {
     }
     updateDisplay();
 }
+
+
+/*
+* e) Make the calculator work! You’ll need to store the first number that is input into the
+calculator when a user presses an operator, and also save which operation has been chosen
+and then operate() on them when the user presses the “=” key.
+a. You should already have the code that can populate the display, so once operate()
+has been called, update the display with the ‘solution’ to the operation.
+b. Figure out how to store all the values and call the operate function with them.
+* */
+
+let firstOperand = null;
+let secondOperand = null;
+let currentOperator = null;
+
+// Clear the display and reset values
+function clearDisplay() {
+    currentInput = "0";
+    firstOperand = null;
+    secondOperand = null;
+    currentOperator = null;
+    updateDisplay();
+}
+
+// Set the operator and save the first operand
+function setOperator(operator) {
+    if (currentOperator) {
+        calculateResult();
+    }
+    firstOperand = parseFloat(currentInput);
+    currentOperator = operator;
+    currentInput = "0";
+}
+
+// Perform the calculation
+function calculateResult() {
+    if (currentOperator && firstOperand !== null) {
+        secondOperand = parseFloat(currentInput);
+
+        let result = operate(currentOperator, firstOperand, secondOperand);
+        // Limit result to 10 significant digits
+        currentInput = parseFloat(result.toPrecision(10)).toString();
+
+        firstOperand = null;
+        currentOperator = null;
+        updateDisplay();
+    }
+}
