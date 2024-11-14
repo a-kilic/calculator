@@ -70,7 +70,13 @@ body {
 }
 
 .clear {
-    grid-column: span 4;
+    grid-column: span 2;
     background-color: #e74c3c;
+    color: white;
+}
+
+.backspace {
+    grid-column: span 2;
+    background-color: #e67e22;
     color: white;
 }
