@@ -53,7 +53,7 @@ function multiply(a, b) {
 
 function divide(a, b) {
   if (b === 0) {
-    return "Error: Division by zero";
+    return "Nice try!";
   }
   return a / b;
 }
@@ -122,18 +122,22 @@ function setOperator(operator) {
 }
 
 function calculateResult() {
-  if (currentOperator && firstOperand !== null && currentInput !== "0") {
+  if (currentOperator && firstOperand !== null) {
     let secondOperand = parseFloat(currentInput);
     let result = operate(currentOperator, firstOperand, secondOperand);
 
-    if (typeof result === "number") {
-      currentInput = parseFloat(result.toPrecision(10)).toString();
-    } else {
+    if (typeof result === "string") {
       currentInput = result;
-    }
+      updateDisplay();
 
-    firstOperand = parseFloat(currentInput);
-    currentOperator = null;
-    updateDisplay();
+      setTimeout(() => {
+        clearDisplay();
+      }, 1000);
+    } else {
+      currentInput = parseFloat(result.toPrecision(10)).toString();
+      firstOperand = parseFloat(currentInput);
+      currentOperator = null;
+      updateDisplay();
+    }
   }
 }
