@@ -20,6 +20,7 @@ const keyMap = {
   "=": calculateResult,
   Escape: clearDisplay,
   c: clearDisplay,
+  Backspace: backspace,
 };
 
 function handleKeyboardInput(event) {
@@ -27,6 +28,15 @@ function handleKeyboardInput(event) {
     event.preventDefault();
     keyMap[event.key]();
   }
+}
+
+function backspace() {
+  if (currentInput.length > 1) {
+    currentInput = currentInput.slice(0, -1);
+  } else {
+    currentInput = "0";
+  }
+  updateDisplay();
 }
 
 function add(a, b) {
