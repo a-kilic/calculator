@@ -1,4 +1,8 @@
 document.addEventListener("keydown", handleKeyboardInput);
+let currentInput = "0";
+let firstOperand = null;
+let secondOperand = null;
+let currentOperator = null;
 
 const keyMap = {
   0: () => appendNumber("0"),
@@ -73,7 +77,6 @@ function operate(operator, a, b) {
   }
 }
 
-let currentInput = "0";
 
 function updateDisplay() {
   const display = document.getElementById("display");
@@ -96,9 +99,6 @@ function appendDecimal() {
   }
 }
 
-let firstOperand = null;
-let secondOperand = null;
-let currentOperator = null;
 
 function clearDisplay() {
   currentInput = "0";
